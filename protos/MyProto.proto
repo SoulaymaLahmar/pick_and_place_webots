@@ -1,0 +1,38 @@
+#VRML_SIM R2025a utf8
+
+PROTO MyProto [
+  field SFVec3f translation 0 0 0
+  field SFRotation rotation 0 0 1 0
+  field SFFloat size 0.1
+  field MFColor color 1 0 0
+] {
+  Solid {
+    translation IS translation
+    rotation IS rotation
+    children [
+      Shape {
+        appearance PBRAppearance {
+          baseColor IS color
+        }
+        geometry Box {
+          size IS sizeVector
+        }
+      }
+    ]
+
+    boundingObject Box {
+      size IS sizeVector
+    }
+
+    physics Physics {
+      density 1000
+      friction 1.8
+    }
+  }
+}
+
+%<
+  // JS template to build a vector from size
+  let s = fields.size.value;
+  let sizeVector = `${s} ${s} ${2*s}`;
+>%

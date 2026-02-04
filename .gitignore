@@ -1,0 +1,5 @@
+# Environnement virtuel Python
+my_yolo_env/
+# Fichiers temporaires Python
+__pycache__/
+*.pyc
